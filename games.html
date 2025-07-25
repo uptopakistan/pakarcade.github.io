@@ -1,21 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Uptopakistan - Mini Games</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uptopakistan - Games Hub</title>
     <style>
-        .game-container { margin: 20px; text-align: center; }
-        iframe { border: none; width: 100%; height: 500px; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .game-selector {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2a7f62;
+        }
+        .option-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        #embed-btn {
+            background-color: #2a7f62;
+            color: white;
+        }
+        #external-btn {
+            background-color: #3a7bd5;
+            color: white;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .game-section {
+            display: none;
+            margin-top: 30px;
+        }
+        .game-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        iframe {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .external-game {
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 25px;
+            background: #3a7bd5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .external-game:hover {
+            background: #2a65b5;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #666;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <h1>Play Free Mini-Games</h1>
-    <div class="game-container">
-        <h2>2048 Puzzle</h2>
-        <iframe src="https://play2048.co/"></iframe>
+    <div class="game-selector">
+        <h1>🎮 Uptopakistan Games Hub</h1>
+        <p>Choose how you want to play:</p>
+        
+        <div class="option-buttons">
+            <button id="embed-btn">Play Embedded Games</button>
+            <button id="external-btn">Open External Games</button>
+        </div>
+        
+        <!-- Embedded Games Section -->
+        <div id="embedded-games" class="game-section">
+            <h2>Embedded Web Games</h2>
+            <p>Play directly on this page</p>
+            
+            <div class="game-container">
+                <h3>Tic-Tac-Toe</h3>
+                <iframe src="https://playtictactoe.org/" width="500" height="500"></iframe>
+            </div>
+            
+            <div class="game-container">
+                <h3>2048 Puzzle</h3>
+                <iframe src="https://play2048.co/" width="450" height="500"></iframe>
+            </div>
+            
+            <div class="game-container">
+                <h3>Snake Game</h3>
+                <iframe src="https://playsnake.org/" width="500" height="500"></iframe>
+            </div>
+            
+            <button class="back-btn" onclick="showSelection()">← Back to Menu</button>
+        </div>
+        
+        <!-- External Games Section -->
+        <div id="external-games" class="game-section">
+            <h2>External Games</h2>
+            <p>These will open in a new tab</p>
+            
+            <a href="https://www.chess.com/play/computer" class="external-game" target="_blank">♟️ Play Chess</a>
+            <a href="https://www.coolmathgames.com/0-moto-x3m" class="external-game" target="_blank">🏍️ Moto X3M</a>
+            <a href="https://www.miniclip.com/games/slither-io/en/" class="external-game" target="_blank">🐍 Slither.io</a>
+            <a href="https://poki.com/en/g/among-us" class="external-game" target="_blank">👨‍🚀 Among Us</a>
+            <a href="https://www.crazygames.com/game/gun-mayhem-2" class="external-game" target="_blank">🔫 Gun Mayhem 2</a>
+            
+            <div style="margin-top: 30px;">
+                <button class="back-btn" onclick="showSelection()">← Back to Menu</button>
+            </div>
+        </div>
     </div>
-    <div class="game-container">
-        <h2>Snake Game</h2>
-        <iframe src="https://playsnake.org/"></iframe>
-    </div>
+
+    <script>
+        // Show the selected game section
+        document.getElementById('embed-btn').addEventListener('click', function() {
+            document.getElementById('embedded-games').style.display = 'block';
+            document.getElementById('external-games').style.display = 'none';
+        });
+        
+        document.getElementById('external-btn').addEventListener('click', function() {
+            document.getElementById('external-games').style.display = 'block';
+            document.getElementById('embedded-games').style.display = 'none';
+        });
+        
+        // Return to selection menu
+        function showSelection() {
+            document.getElementById('embedded-games').style.display = 'none';
+            document.getElementById('external-games').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
